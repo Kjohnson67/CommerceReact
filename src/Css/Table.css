@@ -1,0 +1,64 @@
+@import url(https://db.onlinewebfonts.com/c/98b78079f5ee4295c40260785b4e4fbf?family=Cera+Pro+Bold);
+@font-face {
+    font-family: "Cera Pro Bold";
+    src: url("https://db.onlinewebfonts.com/t/98b78079f5ee4295c40260785b4e4fbf.eot");
+    src: url("https://db.onlinewebfonts.com/t/98b78079f5ee4295c40260785b4e4fbf.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/98b78079f5ee4295c40260785b4e4fbf.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/98b78079f5ee4295c40260785b4e4fbf.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/98b78079f5ee4295c40260785b4e4fbf.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/98b78079f5ee4295c40260785b4e4fbf.svg#Cera Pro Bold")format("svg");
+}
+
+:root {
+    --commerceDarkGreen: #006649;
+    --commerceLightGreen: #74BD43;
+    --commerceLightGrey: #F2F2F2;
+    --commerceDarkGrey: #d3d3d3;
+}
+
+table {
+    margin-top: 10px;
+    background-color: var(--commerceLightGrey);
+    box-shadow: 8px 8px 8px rgb(215, 215, 215);
+    border: 1px solid var(--commerceDarkGrey);
+}
+
+th, td {
+    font-size: 1.2em;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+td:first-child {
+    border-left: 1px solid lightgrey;
+}
+
+td:nth-child(4) {
+    color:#52c108;
+}
+
+td {
+    border-right: 1px solid lightgrey;
+}
+
+th {
+    border-bottom: 1px solid rgb(188, 188, 188);
+}
+
+#inactive {
+    color: red;
+}
+
+tr:nth-child(even) {
+    background-color: var(--commerceDarkGreen);
+    color: white;
+}
+
+.tableContainer {
+    background-color: white;
+    height:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
