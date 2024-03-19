@@ -9,6 +9,8 @@ export const Nav = () => { //navbar with routing links to different pages
         <img src={commercelogo} alt='commerce logo' className='commercelogo'/>
             <div className='NavItems'>
                 <ul> 
+                    <li className='NavList'><Link to="/home">IP Table</Link></li>
+                    <li className='NavList'>Modify Existing</li>
                     <li className='NavList'><Link to="/Add">Add</Link></li>
                     <li className='NavList'><Link to="/Delete">Delete</Link></li>
                     <li className='NavList'>Export</li>

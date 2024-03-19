@@ -2,43 +2,62 @@ import React, { useState } from 'react';
 import '../Css/Table.css';
 
 export const Table = () => { //table creation
-    const [tableData, setTableData] = useState([{ id: 1, name: 'Row 1' }]); //useState set with array of json object with first value = 1
-
-    const addRow = () => { //appending json object to the useState array
-      const newRow = {
-        id: tableData.length + 1,
-        name: `Row ${tableData.length + 1}`
-      };
-      setTableData([...tableData, newRow]); //updates the state variable tableData with newRow which returns a newly updates array
-    };
-
-    const deleteRow = (id) => {
-      setTableData(tableData.filter(row => row.id !== id));
-    };
+    const [tableData, setTableData] = useState([{svrUID: 12, appUID: 1, srcName: 'Johnson3', srcIP: '192.168.10.0', 
+    destName: 'Sus4', destIP: '192.168.20.0', port: '80',  ipStatus: 'Active', createdAt: "14:35", createdBy: 'kJohnson',
+    modifiedAt: '15:23', modifiedBy: 'yourBOI'}]); //useState set with array of json object with first value = 1
   
+    /*useEffect(() => {
+      fetchData();
+    }, []);
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/data');
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };*/
+
   return (
-    <div>
+    <div className='tableContainer'>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Action</th>
+            <th>Server UID</th>
+            <th>App UID</th>
+            <th>Src. Host Name</th>
+            <th>Src. IP</th>
+            <th>Dest. Host Name</th>
+            <th>Dest. IP</th>
+            <th>Port #</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Created By</th>
+            <th>Date Modified</th>
+            <th>Modified By</th>
           </tr>
         </thead>
         <tbody>
-          {tableData.map(row => ( //.map is going to generate rows by generating row elements for each index in the tableData row
-            <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.name}</td>
-              <td>
-                <button onClick={() => deleteRow(row.id)}>Delete</button> {/*on the click of the button, you call delete row function*/}
-              </td>
+          {tableData.map(row => ( //.map is going to generate rows by generating table row elements for each index in the tableData array
+              <tr key={row.id}>
+              <td>{row.svrUID}</td>
+              <td>{row.appUID}</td>
+              <td>{row.srcName}</td>
+              <td>{row.srcIP}</td>
+              <td>{row.destName}</td>
+              <td>{row.destIP}</td>
+              <td>{row.port}</td>
+              <td>{row.ipStatus}</td>
+              <td>{row.createdAt}</td>
+              <td>{row.createdBy}</td>
+              <td>{row.modifiedAt}</td>
+              <td>{row.modifiedBy}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={addRow}>Add Row</button> {/*on the click of the button, it will call the addRow function to append new row to array*/}
     </div>
   )
 }

@@ -5,7 +5,6 @@ import '../Css/Nav.css'
 
 export const Delete = () => {
   return (
-    <div>
-    </div>  
+    <><Nav /></>
   )
 };
