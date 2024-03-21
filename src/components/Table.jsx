@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
-import '../Css/Table.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../Css/Table.css'
 
-export const Table = () => { //table creation
-    const [tableData, setTableData] = useState([{svrUID: 12, appUID: 1, srcName: 'Johnson3', srcIP: '192.168.10.0', 
-    destName: 'Sus4', destIP: '192.168.20.0', port: '80',  ipStatus: 'Active', createdAt: "14:35", createdBy: 'kJohnson',
-    modifiedAt: '15:23', modifiedBy: 'yourBOI'}]); //useState set with array of json object with first value = 1
-  
-    /*useEffect(() => {
-      fetchData();
-    }, []);
-  
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/data');
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };*/
+export const Table = () => {
+  const [tableData, setTableData] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/serverinfos');
+      setTableData(response.data);
+      console.log(response);
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
+  };
+
+  const handleRowClick = (row) => {
+    setSelectedRow(row);
+  };
 
   return (
     <div className='tableContainer'>
@@ -40,8 +44,8 @@ export const Table = () => { //table creation
           </tr>
         </thead>
         <tbody>
-          {tableData.map(row => ( //.map is going to generate rows by generating table row elements for each index in the tableData array
-              <tr key={row.id}>
+          {tableData.map((row, index) => (
+            <tr key={index} className={row === selectedRow ? 'selected' : ''} onClick={() => handleRowClick(row)}>
               <td>{row.svrUID}</td>
               <td>{row.appUID}</td>
               <td>{row.srcName}</td>
@@ -59,5 +63,5 @@ export const Table = () => { //table creation
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
